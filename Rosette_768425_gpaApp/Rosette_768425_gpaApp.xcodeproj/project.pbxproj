@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		F50A5511237BE17F00840B13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5510237BE17F00840B13 /* AppDelegate.swift */; };
 		F50A5513237BE17F00840B13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5512237BE17F00840B13 /* SceneDelegate.swift */; };
-		F50A5515237BE17F00840B13 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5514237BE17F00840B13 /* ViewController.swift */; };
 		F50A5518237BE17F00840B13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50A5516237BE17F00840B13 /* Main.storyboard */; };
 		F50A551A237BE18400840B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50A5519237BE18400840B13 /* Assets.xcassets */; };
 		F50A551D237BE18400840B13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50A551B237BE18400840B13 /* LaunchScreen.storyboard */; };
+		F50A5525237BE43300840B13 /* StudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5524237BE43300840B13 /* StudentsTableViewController.swift */; };
+		F50A5527237BE64B00840B13 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5526237BE64B00840B13 /* RegisterViewController.swift */; };
+		F50A5529237BEB9300840B13 /* SemesterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5528237BEB9300840B13 /* SemesterTableViewController.swift */; };
+		F50A552D237BEE4A00840B13 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A552C237BEE4A00840B13 /* CoursesViewController.swift */; };
+		F50A5530237BEE8D00840B13 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A552F237BEE8D00840B13 /* Student.swift */; };
+		F50A5532237BEF7E00840B13 /* ErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5531237BEF7E00840B13 /* ErrorCodes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F50A550D237BE17F00840B13 /* Rosette_768425_gpaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rosette_768425_gpaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50A5510237BE17F00840B13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50A5512237BE17F00840B13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F50A5514237BE17F00840B13 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F50A5517237BE17F00840B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F50A5519237BE18400840B13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F50A551C237BE18400840B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F50A551E237BE18400840B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F50A5524237BE43300840B13 /* StudentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsTableViewController.swift; sourceTree = "<group>"; };
+		F50A5526237BE64B00840B13 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F50A5528237BEB9300840B13 /* SemesterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemesterTableViewController.swift; sourceTree = "<group>"; };
+		F50A552C237BEE4A00840B13 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
+		F50A552F237BEE8D00840B13 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		F50A5531237BEF7E00840B13 /* ErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,28 @@
 		F50A550F237BE17F00840B13 /* Rosette_768425_gpaApp */ = {
 			isa = PBXGroup;
 			children = (
+				F50A552E237BEE7F00840B13 /* src */,
 				F50A5510237BE17F00840B13 /* AppDelegate.swift */,
 				F50A5512237BE17F00840B13 /* SceneDelegate.swift */,
-				F50A5514237BE17F00840B13 /* ViewController.swift */,
 				F50A5516237BE17F00840B13 /* Main.storyboard */,
 				F50A5519237BE18400840B13 /* Assets.xcassets */,
 				F50A551B237BE18400840B13 /* LaunchScreen.storyboard */,
 				F50A551E237BE18400840B13 /* Info.plist */,
+				F50A5524237BE43300840B13 /* StudentsTableViewController.swift */,
+				F50A5526237BE64B00840B13 /* RegisterViewController.swift */,
+				F50A5528237BEB9300840B13 /* SemesterTableViewController.swift */,
+				F50A552C237BEE4A00840B13 /* CoursesViewController.swift */,
 			);
 			path = Rosette_768425_gpaApp;
+			sourceTree = "<group>";
+		};
+		F50A552E237BEE7F00840B13 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F50A552F237BEE8D00840B13 /* Student.swift */,
+				F50A5531237BEF7E00840B13 /* ErrorCodes.swift */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F50A5515237BE17F00840B13 /* ViewController.swift in Sources */,
+				F50A5525237BE43300840B13 /* StudentsTableViewController.swift in Sources */,
+				F50A5529237BEB9300840B13 /* SemesterTableViewController.swift in Sources */,
+				F50A5530237BEE8D00840B13 /* Student.swift in Sources */,
+				F50A5532237BEF7E00840B13 /* ErrorCodes.swift in Sources */,
 				F50A5511237BE17F00840B13 /* AppDelegate.swift in Sources */,
 				F50A5513237BE17F00840B13 /* SceneDelegate.swift in Sources */,
+				F50A5527237BE64B00840B13 /* RegisterViewController.swift in Sources */,
+				F50A552D237BEE4A00840B13 /* CoursesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
