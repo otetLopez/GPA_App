@@ -15,6 +15,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var lnameFld: UITextField!
     @IBOutlet weak var sidFld: UITextField!
     
+    //var registryConfirmed : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,15 +25,15 @@ class RegisterViewController: UIViewController {
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if isFilled() {
-            alert()
-            createStudent()
+            alertAddConfirmation()
         }
-        
     }
     
     func createStudent() {
         let student : Student = Student(fname: fnameFld.text!, lname: lnameFld.text!, sid: sidFld.text!)
         self.delegate?.addStudent(student: student)
+        alert(title: "New Contact Saved", msg: "\(fnameFld.text!) is now a student.")
+        resetVariables()
     }
     
     func isFilled() -> Bool {
@@ -48,48 +49,60 @@ class RegisterViewController: UIViewController {
         }
         
         if !err_msg.isEmpty {
-            err_msg.append("fields are empty")
-            alert(msg : err_msg)
+            err_msg.append("field(s) are empty")
+            alert(title: "Error", msg : err_msg)
             return false
         }
         return true
     }
-    func alert() {
-         let alertController = UIAlertController(title: "Student", message: "Are you sure?", preferredStyle: .alert)
+    func alertAddConfirmation()  {
+        let alertController = UIAlertController(title: "Student", message: "Are you sure?", preferredStyle: .alert)
          
-         let cancelAction = UIAlertAction(title: "No Way!", style: .cancel) { (action) in
-         }
-         cancelAction.setValue(UIColor.orange, forKey: "titleTextColor")
-         
-        let addAction = UIAlertAction(title: "Yes, I'm Sure!", style: .default) { (action) in
-                
-         }
-         addAction.setValue(UIColor.red, forKey: "titleTextColor")
-
-         alertController.addAction(cancelAction)
-         alertController.addAction(addAction)
-             
-         self.present(alertController, animated: true, completion: nil)
-     }
-    
-    func alert(msg : String) {
-        let alertController = UIAlertController(title: "Delete", message: "Are you sure?", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            //self.cancelledAction()
-        }
+        let cancelAction = UIAlertAction(title: "No Way!", style: .cancel, handler: nil)
         cancelAction.setValue(UIColor.orange, forKey: "titleTextColor")
-        
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
-               
+         
+        let sureAction = UIAlertAction(title: "Yes, I'm Sure!", style: .destructive) { (action) in
+            print("DEBUG: Sure student")
+            if self.isSidValid() { self.createStudent() }
+            else { self.alert(title: "Error", msg: "ID already exists") }
         }
-        deleteAction.setValue(UIColor.red, forKey: "titleTextColor")
 
         alertController.addAction(cancelAction)
-        alertController.addAction(deleteAction)
-            
+        alertController.addAction(sureAction)
+             
+        self.present(alertController, animated: true, completion: nil)
+     }
+    
+    func alert(title: String, msg : String) {
+        let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+  
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    func isSidValid() -> Bool {
+        let studentList : [Student] = self.delegate?.studentList ?? [Student]()
+        for idx in studentList {
+            if idx.getsid() == sidFld.text! {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func resetVariables() {
+        clearFields()
+    }
+    
+    func clearFields() {
+        fnameFld.text! = ""
+        lnameFld.text! = ""
+        sidFld.text! = ""
+    }
+    
+
     
     /*
     // MARK: - Navigation
