@@ -18,6 +18,8 @@
 		F50A552D237BEE4A00840B13 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A552C237BEE4A00840B13 /* CoursesViewController.swift */; };
 		F50A5530237BEE8D00840B13 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A552F237BEE8D00840B13 /* Student.swift */; };
 		F50A5532237BEF7E00840B13 /* ErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5531237BEF7E00840B13 /* ErrorCodes.swift */; };
+		F50A5534237C458900840B13 /* Terms.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5533237C458900840B13 /* Terms.swift */; };
+		F50A5536237C45BE00840B13 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5535237C45BE00840B13 /* Course.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		F50A552C237BEE4A00840B13 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		F50A552F237BEE8D00840B13 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		F50A5531237BEF7E00840B13 /* ErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodes.swift; sourceTree = "<group>"; };
+		F50A5533237C458900840B13 /* Terms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terms.swift; sourceTree = "<group>"; };
+		F50A5535237C45BE00840B13 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 			children = (
 				F50A552F237BEE8D00840B13 /* Student.swift */,
 				F50A5531237BEF7E00840B13 /* ErrorCodes.swift */,
+				F50A5533237C458900840B13 /* Terms.swift */,
+				F50A5535237C45BE00840B13 /* Course.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -163,9 +169,11 @@
 			files = (
 				F50A5525237BE43300840B13 /* StudentsTableViewController.swift in Sources */,
 				F50A5529237BEB9300840B13 /* SemesterTableViewController.swift in Sources */,
+				F50A5536237C45BE00840B13 /* Course.swift in Sources */,
 				F50A5530237BEE8D00840B13 /* Student.swift in Sources */,
 				F50A5532237BEF7E00840B13 /* ErrorCodes.swift in Sources */,
 				F50A5511237BE17F00840B13 /* AppDelegate.swift in Sources */,
+				F50A5534237C458900840B13 /* Terms.swift in Sources */,
 				F50A5513237BE17F00840B13 /* SceneDelegate.swift in Sources */,
 				F50A5527237BE64B00840B13 /* RegisterViewController.swift in Sources */,
 				F50A552D237BEE4A00840B13 /* CoursesViewController.swift in Sources */,
