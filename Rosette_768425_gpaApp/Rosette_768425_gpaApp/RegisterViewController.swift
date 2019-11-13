@@ -20,8 +20,15 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
+    @objc func viewTapped() {
+        fnameFld.resignFirstResponder()
+        lnameFld.resignFirstResponder()
+        sidFld.resignFirstResponder()
+    }
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if isFilled() {
