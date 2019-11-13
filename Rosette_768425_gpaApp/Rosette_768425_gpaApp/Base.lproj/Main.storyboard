@@ -244,12 +244,20 @@
                                 <rect key="frame" x="190" y="533" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="xce-7O-Oay" eventType="touchUpInside" id="i0U-LK-kyW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="bFp-Lc-6YU"/>
                     </view>
                     <navigationItem key="navigationItem" id="f61-56-ErM"/>
+                    <connections>
+                        <outlet property="fnameFld" destination="2vR-3s-XMe" id="hQ4-rh-Fwb"/>
+                        <outlet property="lnameFld" destination="QCQ-Mg-E82" id="qbt-KV-mDn"/>
+                        <outlet property="sidFld" destination="6qz-ZO-Yta" id="DWk-Tb-5ag"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vg-i3-SIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

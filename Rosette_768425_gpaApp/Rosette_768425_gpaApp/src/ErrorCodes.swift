@@ -10,4 +10,5 @@ import Foundation
 
 enum ErrorCodes {
     case SUCCESSFUL
+    case ERROR_UKNOWN
 }
