@@ -62,8 +62,17 @@ class StudentsTableViewController: UITableViewController, UISearchResultsUpdatin
         
          if resultSearchController.isActive {
             let cname : String = filteredTableData[indexPath.row]
-             cell.textLabel?.text = cname
-             
+            cell.textLabel?.text = cname
+            
+            for student in studentList {
+                let name : String = "\(student.getfname()) \(student.getlname())"
+                if name == cname {
+                    if !student.getcgrade().isEmpty {
+                        cell.detailTextLabel?.text = "CGPA:  \(String(format: "%.2f", student.getcgpa()))"
+                        break
+                    }
+                }
+            }
          } else {
             let cname : String = studentList[indexPath.row].getfname() + " " + studentList[indexPath.row].getlname()
             cell.textLabel?.text = cname
