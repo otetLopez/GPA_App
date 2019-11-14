@@ -55,6 +55,7 @@ class CoursesViewController: UIViewController {
 
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
         var err : ErrorCodes = .SUCCESSFUL
+        marks.removeAll()
         for c in cmarks {
             var mark : Int = 0
             if c.text!.isEmpty { mark = 0 }
@@ -76,7 +77,6 @@ class CoursesViewController: UIViewController {
     func calculategpa() {
         var idx : Int = 0
         for mark in marks {
-            print("there are total \(marks.count)")
             self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setMark(mark: mark)
             self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setGrade()
             self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setWGP()

@@ -41,7 +41,7 @@ class SemesterTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You selected Term \(indexPath.row + 1)")
+        print("DEBUG: You selected Term \(indexPath.row + 1)")
         termIdx = indexPath.row
     }
     

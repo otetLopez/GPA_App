@@ -54,7 +54,7 @@ class StudentsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You selected student \(studentList[indexPath.row].getfname())")
+        print("DEBUG: You selected student \(studentList[indexPath.row].getfname())")
         sIdx = indexPath.row
     }
     
