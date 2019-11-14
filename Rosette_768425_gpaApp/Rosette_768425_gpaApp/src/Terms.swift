@@ -12,14 +12,13 @@ class Term {
     public var courses : [Course]
     private var gpa  : Double
     private var grade : String
+    private var credits : Int
     
     init(courses: [Course]) {
         self.courses = courses
         self.gpa = 0.0
         self.grade = ""
-        
-        //self.setgpa()
-        //self.setgrade()
+        self.credits = 0
     }
     
     public func setgpa() {
@@ -29,6 +28,7 @@ class Term {
             result += idx.getWgp()
             count += idx.getCredit()
         }
+        self.credits = count
         self.gpa = result / Double(count)
     }
     
@@ -61,6 +61,7 @@ class Term {
     
     public func getgpa() -> Double { return self.gpa }
     public func getgrade() -> String { return self.grade }
+    public func getcredits() -> Int { return self.credits }
     
     
     

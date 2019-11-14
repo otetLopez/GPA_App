@@ -20,6 +20,7 @@
 		F50A5532237BEF7E00840B13 /* ErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5531237BEF7E00840B13 /* ErrorCodes.swift */; };
 		F50A5534237C458900840B13 /* Terms.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5533237C458900840B13 /* Terms.swift */; };
 		F50A5536237C45BE00840B13 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5535237C45BE00840B13 /* Course.swift */; };
+		F5A18095237DDE940052F918 /* ProgramMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A18094237DDE940052F918 /* ProgramMap.swift */; };
 		F5B674BB237D904700617933 /* Win.wav in Resources */ = {isa = PBXBuildFile; fileRef = F5B674BA237D904700617933 /* Win.wav */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		F50A5531237BEF7E00840B13 /* ErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodes.swift; sourceTree = "<group>"; };
 		F50A5533237C458900840B13 /* Terms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terms.swift; sourceTree = "<group>"; };
 		F50A5535237C45BE00840B13 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		F5A18094237DDE940052F918 /* ProgramMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramMap.swift; sourceTree = "<group>"; };
 		F5B674BA237D904700617933 /* Win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Win.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				F50A5531237BEF7E00840B13 /* ErrorCodes.swift */,
 				F50A5533237C458900840B13 /* Terms.swift */,
 				F50A5535237C45BE00840B13 /* Course.swift */,
+				F5A18094237DDE940052F918 /* ProgramMap.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				F50A5536237C45BE00840B13 /* Course.swift in Sources */,
 				F50A5530237BEE8D00840B13 /* Student.swift in Sources */,
 				F50A5532237BEF7E00840B13 /* ErrorCodes.swift in Sources */,
+				F5A18095237DDE940052F918 /* ProgramMap.swift in Sources */,
 				F50A5511237BE17F00840B13 /* AppDelegate.swift in Sources */,
 				F50A5534237C458900840B13 /* Terms.swift in Sources */,
 				F50A5513237BE17F00840B13 /* SceneDelegate.swift in Sources */,

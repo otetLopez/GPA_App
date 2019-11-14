@@ -205,17 +205,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="eTw-iL-xPa"/>
                     <connections>
-                        <outlet property="c1Lbl" destination="Qua-z0-3d6" id="q1y-0V-qyO"/>
-                        <outlet property="c2Lbl" destination="heL-Uf-Wfb" id="jnf-gl-n2w"/>
-                        <outlet property="c3Lbl" destination="WO6-6x-y7j" id="IrB-2Q-5cK"/>
-                        <outlet property="c4Lbl" destination="rSN-GB-ZT2" id="Vyr-y9-cMe"/>
-                        <outlet property="c5Lbl" destination="H9l-he-zmP" id="4Ye-Jg-2Qf"/>
                         <outlet property="resultLbl" destination="fPU-3o-75D" id="goX-ZC-tNT"/>
                         <outletCollection property="cmarks" destination="D3D-3U-WcK" collectionClass="NSMutableArray" id="2Pz-IJ-Eew"/>
                         <outletCollection property="cmarks" destination="FdV-U7-DYj" collectionClass="NSMutableArray" id="m8j-Au-aWO"/>
                         <outletCollection property="cmarks" destination="LCU-gM-gUR" collectionClass="NSMutableArray" id="EaY-mX-Kuw"/>
                         <outletCollection property="cmarks" destination="ABu-02-Z83" collectionClass="NSMutableArray" id="ZKx-PP-IfB"/>
                         <outletCollection property="cmarks" destination="yzT-Cb-Qgc" collectionClass="NSMutableArray" id="VHz-m4-H3c"/>
+                        <outletCollection property="courseLbl" destination="Qua-z0-3d6" collectionClass="NSMutableArray" id="fwW-HW-cwL"/>
+                        <outletCollection property="courseLbl" destination="heL-Uf-Wfb" collectionClass="NSMutableArray" id="tfZ-51-coE"/>
+                        <outletCollection property="courseLbl" destination="WO6-6x-y7j" collectionClass="NSMutableArray" id="Hqk-UV-Ztw"/>
+                        <outletCollection property="courseLbl" destination="rSN-GB-ZT2" collectionClass="NSMutableArray" id="NaI-pO-Rr7"/>
+                        <outletCollection property="courseLbl" destination="H9l-he-zmP" collectionClass="NSMutableArray" id="HUB-TO-sVg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKV-ZN-PSn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

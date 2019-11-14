@@ -32,6 +32,7 @@ class Student {
         for idx in self.terms {
             result += idx.getgpa()
             count += 1
+            //count += idx.getcredits()
         }
         self.cgpa = result / Double(count)
     }

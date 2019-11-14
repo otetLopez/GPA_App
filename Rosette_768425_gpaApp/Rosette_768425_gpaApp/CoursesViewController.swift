@@ -15,11 +15,7 @@ class CoursesViewController: UIViewController {
     
     weak var delegate: SemesterTableViewController?
     @IBOutlet var cmarks: [UITextField]!
-    @IBOutlet weak var c1Lbl: UILabel!
-    @IBOutlet weak var c2Lbl: UILabel!
-    @IBOutlet weak var c3Lbl: UILabel!
-    @IBOutlet weak var c4Lbl: UILabel!
-    @IBOutlet weak var c5Lbl: UILabel!
+    @IBOutlet var courseLbl: [UILabel]!
     @IBOutlet weak var resultLbl: UILabel!
     
 
@@ -37,6 +33,7 @@ class CoursesViewController: UIViewController {
         termidx = self.delegate!.termIdx
         sIdx = self.delegate!.sIdx
         retrieveMarks()
+        updateCourses()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         self.view.addGestureRecognizer(tapGesture)
@@ -75,10 +72,35 @@ class CoursesViewController: UIViewController {
         } else { marks.removeAll() }
     }
     
+    func updateCourses() {
+        credit.removeAll()
+        let termcourses : [String] = programmap[termidx]
+        var idx : Int = 0
+        for c in courseLbl {
+            c.text! = termcourses[idx]
+            let num : Int = Int(String(termcourses[idx].last!))!
+            credit.append(num)
+            print("DEBUG: Credit score for \(termcourses[idx]) is \(num)")
+            idx += 1
+        }
+    }
+    
+    func setCredits() {
+        //credit.removeAll()
+        let termcourses : [String] = programmap[termidx]
+        var idx : Int = 0
+        for c in termcourses {
+            let num = (c.last)
+            print("DEBUG: Credit score for \(c) is \(num)")
+            idx += 1
+        }
+    }
+    
     func calculategpa() {
         var idx : Int = 0
         for mark in marks {
             self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setMark(mark: mark)
+            self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setCredit(credit: credit[idx])
             self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setGrade()
             self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setWGP()
             idx += 1

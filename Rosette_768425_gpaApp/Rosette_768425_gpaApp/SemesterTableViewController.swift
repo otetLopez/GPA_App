@@ -53,8 +53,8 @@ class SemesterTableViewController: UITableViewController {
     func createCourses () -> [Course] {
         // Given that all terms have 5 Coures
         var courseList = [Course]()
-        for idx in 1...5 {
-            let course : Course = Course(credit: idx)
+        for _ in 1...5 {
+            let course : Course = Course()//Course(credit: idx)
             courseList.append(course)
         }
         return courseList
