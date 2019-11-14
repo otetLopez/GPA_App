@@ -96,8 +96,8 @@ class CoursesViewController: UIViewController {
     }
     
     func retrieveMarks() {
-        print("DEBUG: Student has grade of \(self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgrade() ?? "") which was previously calculated")
         if (!(self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgrade().isEmpty)!) {
+            print("DEBUG: Student has grade of \(self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgrade() ?? "") which was previously calculated")
             var idx : Int = 0
             for c in cmarks {
                 let mark : Int = (self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].getMark())!
@@ -106,7 +106,7 @@ class CoursesViewController: UIViewController {
             }
             self.gpa = (self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgpa())!
             resultLbl.text! = String(format: "%.2f", self.gpa)
-            }
+        } else { print("DEBUG: This is the first time this student to calculate gpa of this term.") }
     }
     
 //    func createCourse() {

@@ -46,7 +46,7 @@ class SemesterTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //tableView.reloadData()
+        tableView.reloadData()
         termIdx = -1
     }
     
@@ -85,6 +85,11 @@ class SemesterTableViewController: UITableViewController {
         cell.textLabel?.text = "Term \(indexPath.row + 1)"
         // Configure the cell...
 
+        if (!(self.delegate?.studentList[sIdx].terms[indexPath.row].getgrade().isEmpty)!) {
+            let gpaLabel : String = "GPA: \(String(format: "%.2f", (self.delegate?.studentList[sIdx].terms[indexPath.row].getgpa())!))"
+            cell.detailTextLabel?.text = gpaLabel
+        } else { print("DEBUG: Student has no GPA for Term \(indexPath.row + 1)") }
+        
         return cell
     }
     
