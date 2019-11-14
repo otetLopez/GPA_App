@@ -88,7 +88,7 @@ class SemesterTableViewController: UITableViewController {
         if (!(self.delegate?.studentList[sIdx].terms[indexPath.row].getgrade().isEmpty)!) {
             let gpaLabel : String = "GPA:  \(String(format: "%.2f", (self.delegate?.studentList[sIdx].terms[indexPath.row].getgpa())!))"
             cell.detailTextLabel?.text = gpaLabel
-        } else { print("DEBUG: Student has no GPA for Term \(indexPath.row + 1)") }
+        } //else { print("DEBUG: Student has no GPA for Term \(indexPath.row + 1)") }
         
         return cell
     }

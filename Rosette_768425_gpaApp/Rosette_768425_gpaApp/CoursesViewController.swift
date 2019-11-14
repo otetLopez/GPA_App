@@ -106,25 +106,8 @@ class CoursesViewController: UIViewController {
             }
             self.gpa = (self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgpa())!
             resultLbl.text! = String(format: "%.2f", self.gpa)
-        } else { print("DEBUG: This is the first time this student to calculate gpa of this term.") }
+        } //else { print("DEBUG: This is the first time this student to calculate gpa of this term.") }
     }
-    
-//    func createCourse() {
-//        var idx : Int = 0
-//        for mark in marks {
-//            let course : Course = Course(mark: mark, credit: credit[idx])
-//            idx += 1
-//            //self.delegate?.addCourse(course: course)
-//            courseList.append(course)
-//        }
-//    }
-//
-//    func createTerm() {
-//        let term : Term = Term(courses: courseList)
-//        self.gpa = term.getgpa()
-//        self.grade = term.getgrade()
-//        self.delegate?.addTerm(term : term)
-//    }
     
     func alert(title: String, msg : String) {
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)

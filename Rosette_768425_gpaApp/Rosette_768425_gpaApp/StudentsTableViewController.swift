@@ -8,13 +8,35 @@
 
 import UIKit
 
-class StudentsTableViewController: UITableViewController {
+class StudentsTableViewController: UITableViewController, UISearchResultsUpdating {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    var resultSearchController = UISearchController()
+    var filteredTableData = [String]()
+    var studentNames = [String]()
+    
     var studentList = [Student]()
     var sIdx : Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.definesPresentationContext = true
+            controller.searchBar.placeholder = "Search Student"
+            controller.obscuresBackgroundDuringPresentation = false
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
 
+            tableView.tableHeaderView = controller.searchBar
+
+            return controller
+        })()
+
+        // Reload the table
+        tableView.reloadData()
+
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,47 +53,89 @@ class StudentsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return studentList.count
-    }
-    
-    public func addStudent(student : Student) {
-        studentList.append(student)
+        return (resultSearchController.isActive) ? filteredTableData.count : studentList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "students", for: indexPath)
-        let cname : String = studentList[indexPath.row].getfname() + " " + studentList[indexPath.row].getlname()
-        cell.textLabel?.text = cname
         
-        if studentList[indexPath.row].terms.count > 0 {
-            var status : GradeStatus = .STATUS_TERM_GRADE_COMPLETE
-            for term in studentList[indexPath.row].terms {
-                if term.getgrade().isEmpty {
-                    status = .STATUS_TERM_GRADE_INCOMPLETE
-                }
-            }
+         if resultSearchController.isActive {
+            let cname : String = filteredTableData[indexPath.row]
+             cell.textLabel?.text = cname
+             
+         } else {
+            let cname : String = studentList[indexPath.row].getfname() + " " + studentList[indexPath.row].getlname()
+            cell.textLabel?.text = cname
             
-            if status == .STATUS_TERM_GRADE_COMPLETE {
-                studentList[indexPath.row].setcgpa()
-                studentList[indexPath.row].setgrade()
+            if studentList[indexPath.row].terms.count > 0 {
+                var status : GradeStatus = .STATUS_TERM_GRADE_COMPLETE
+                for term in studentList[indexPath.row].terms {
+                    if term.getgrade().isEmpty {
+                        status = .STATUS_TERM_GRADE_INCOMPLETE
+                    }
+                }
                 
-                cell.detailTextLabel?.text = "CGPA:  \(String(format: "%.2f", studentList[indexPath.row].getcgpa()))"
+                if status == .STATUS_TERM_GRADE_COMPLETE {
+                    studentList[indexPath.row].setcgpa()
+                    studentList[indexPath.row].setgrade()
+                    
+                    cell.detailTextLabel?.text = "CGPA:  \(String(format: "%.2f", studentList[indexPath.row].getcgpa()))"
+                }
             }
         }
         return cell
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        studentNames.removeAll()
+        if studentList.count <= 0 { resultSearchController.searchBar.isHidden = true }
+        else { resultSearchController.searchBar.isHidden = false }
+        var idx : Int = 0
+        for student in studentList {
+            let name : String = "\(student.getfname()) \(student.getlname())"
+            studentNames.append(name)
+            idx += 1
+        }
         tableView.reloadData()
         sIdx = -1
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("DEBUG: You selected student \(studentList[indexPath.row].getfname())")
-        sIdx = indexPath.row
+        if resultSearchController.isActive {
+            //print("DEBUG: You selected student \(filteredTableData[indexPath.row])")
+            var idx : Int = 0
+            for filtered in studentList {
+                let cname : String = "\(filtered.getfname()) \(filtered.getlname())"
+                if cname == filteredTableData[indexPath.row] {
+                    print("DEBUG: You filter selected student \(studentList[idx].getfname())")
+                    sIdx = idx
+                    break
+                }
+                idx += 1
+            }
+        }
+        else {
+            print("DEBUG: You selected student \(studentList[indexPath.row].getfname())")
+            sIdx = indexPath.row
+        }
+        resultSearchController.dismiss(animated: false)
+        dismiss(animated: true)
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredTableData.removeAll(keepingCapacity: false)
+
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let array = (studentNames as NSArray).filtered(using: searchPredicate)
+        filteredTableData = array as! [String]
+
+        self.tableView.reloadData()
+    }
+    
+    public func addStudent(student : Student) {
+        studentList.append(student)
+    }
     
     /*
     // Override to support conditional editing of the table view.
