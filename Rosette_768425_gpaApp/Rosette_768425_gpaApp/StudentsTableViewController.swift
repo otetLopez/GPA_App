@@ -195,6 +195,9 @@ class StudentsTableViewController: UITableViewController, UISearchResultsUpdatin
         
         if let register = segue.destination as? RegisterViewController {
             register.delegate = self
+            let backItem = UIBarButtonItem()
+            backItem.title = "Student"
+            navigationItem.backBarButtonItem = backItem
         }
         
         if let terms = segue.destination as? SemesterTableViewController {

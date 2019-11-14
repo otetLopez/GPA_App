@@ -281,7 +281,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="bFp-Lc-6YU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="f61-56-ErM"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="f61-56-ErM"/>
                     <connections>
                         <outlet property="fnameFld" destination="2vR-3s-XMe" id="hQ4-rh-Fwb"/>
                         <outlet property="lnameFld" destination="QCQ-Mg-E82" id="qbt-KV-mDn"/>
