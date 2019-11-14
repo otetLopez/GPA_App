@@ -10,6 +10,10 @@ import UIKit
 
 class SemesterTableViewController: UITableViewController {
 
+    //var courseList = [Course]()
+    var termList = [Term]()
+    var isAdded : Bool = false
+    var termIdx : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +22,7 @@ class SemesterTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        createTerms()
     }
 
     // MARK: - Table view data source
@@ -30,6 +35,40 @@ class SemesterTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You selected Term \(indexPath.row + 1)")
+        termIdx = indexPath.row
+    }
+    
+    func createCourses () -> [Course] {
+        // Given that all terms have 5 Coures
+        var courseList = [Course]()
+        for idx in 1...5 {
+            let course : Course = Course(credit: idx)
+            courseList.append(course)
+        }
+        return courseList
+    }
+    
+    func createTerms() {
+        for _ in 1...3 {
+            let term : Term = Term(courses: createCourses())
+            print("Total courses created for each term \(term.courses.count)")
+            termList.append(term)
+        }
+    }
+    
+    func addCourse(course: Course) {
+        print("DEBUG: Added course with the following details:\n\(course)")
+        //courseList.append(course)
+        
+    }
+    
+    func addTerm(term: Term) {
+        print("DEBUG: Added term with the following details:\n")
+        termList.append(term)
     }
 
     /*
@@ -77,14 +116,17 @@ class SemesterTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if let course = segue.destination as? CoursesViewController {
+            course.delegate = self
+        }
     }
-    */
 
 }

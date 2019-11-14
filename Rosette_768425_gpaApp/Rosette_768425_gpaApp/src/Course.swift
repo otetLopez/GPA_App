@@ -8,13 +8,29 @@
 
 import Foundation
 
-class Course {
+class Course : CustomStringConvertible{
     private var mark : Int
     private var credit : Int
     private var gp : Double
     private var wgp : Double
     private var grade : String
     
+    
+    init () {
+        self.mark = 0
+        self.credit = 0
+        self.grade = ""
+        self.gp = 0.0
+        self.wgp = 0.0
+    }
+    
+    init (credit : Int) {
+        self.credit = credit
+        self.mark = 0
+        self.grade = ""
+        self.gp = 0.0
+        self.wgp = 0.0
+    }
     
     init (mark: Int, credit: Int) {
         self.mark = mark
@@ -24,7 +40,7 @@ class Course {
         self.wgp = 0.0
         
         /** Get equivalent Grade Point for the given mark **/
-        self.setGrade(mark: mark)
+        self.setGrade()
         self.wgp = self.gp * Double(credit)
     }
     
@@ -32,9 +48,12 @@ class Course {
     func getCredit() -> Int { return self.credit }
     func getWgp() -> Double { return self.wgp }
     
+    func setMark(mark: Int) { self.mark = mark }
+    func setCredit(credit : Int) { self.credit = credit }
+    func setWGP() { self.wgp = self.gp * Double(self.credit) }
     
-    func setGrade(mark: Int) {
-        switch mark {
+    func setGrade() {
+        switch self.mark {
             case 94...100:
                 self.grade = "A+"
                 self.gp = 4.0
@@ -69,6 +88,10 @@ class Course {
                 self.grade = "F"
                 self.gp = 0.0
         }
+    }
+    
+    var description: String {
+        return "Mark\t\t\t: \(self.mark)\nCredit\t\t\t: \(self.credit)\nGrade Point\t\t\t: \(self.gp)\nWeighted Grade Point\t\t\t: \(self.wgp)\nGrade\t\t\t: \(self.grade)"
     }
 
 }

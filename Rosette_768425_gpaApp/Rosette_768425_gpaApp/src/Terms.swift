@@ -9,7 +9,7 @@
 import Foundation
 
 class Term {
-    private var courses : [Course]
+    public var courses : [Course]
     private var gpa  : Double
     private var grade : String
     
@@ -17,20 +17,23 @@ class Term {
         self.courses = courses
         self.gpa = 0.0
         self.grade = ""
+        
+        self.setgpa()
+        self.setgrade()
     }
     
-    public func setgpa(gpa: Double) {
+    public func setgpa() {
         var result : Double = 0.0
         var count : Int = 0
         for idx in self.courses {
             result += idx.getWgp()
-            count += 1
+            count += idx.getCredit()
         }
         self.gpa = result / Double(count)
     }
     
-    public func setgrade(gpa : Double) {
-        switch gpa {
+    public func setgrade() {
+        switch self.gpa {
             case 4.0:
                 self.grade = "A+"
             case 3.7..<4.0:
