@@ -61,9 +61,9 @@ class SemesterTableViewController: UITableViewController {
     }
     
     func createTerms() {
+        print("DEBUG: Creating terms")
         for _ in 1...3 {
             let term : Term = Term(courses: createCourses())
-            print("Total courses created for each term \(term.courses.count)")
             self.delegate?.studentList[sIdx].terms.append(term)
         }
     }
@@ -79,15 +79,15 @@ class SemesterTableViewController: UITableViewController {
 //        termList.append(term)
 //    }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "term cell", for: indexPath)
+        cell.textLabel?.text = "Term \(indexPath.row + 1)"
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

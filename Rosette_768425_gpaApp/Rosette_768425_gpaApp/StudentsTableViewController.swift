@@ -43,6 +43,8 @@ class StudentsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "students", for: indexPath)
         let cname : String = studentList[indexPath.row].getfname() + " " + studentList[indexPath.row].getlname()
         cell.textLabel?.text = cname
+        
+        //if studentList.
         // Configure the cell...
 
         return cell
