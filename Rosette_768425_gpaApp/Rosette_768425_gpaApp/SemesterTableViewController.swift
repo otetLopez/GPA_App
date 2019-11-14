@@ -10,10 +10,12 @@ import UIKit
 
 class SemesterTableViewController: UITableViewController {
 
+    weak var delegate: StudentsTableViewController?
     //var courseList = [Course]()
     var termList = [Term]()
     var isAdded : Bool = false
-    var termIdx : Int = 0
+    var sIdx : Int = -1
+    var termIdx : Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +24,8 @@ class SemesterTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        createTerms()
+        sIdx = self.delegate!.sIdx
+        if self.delegate?.studentList[sIdx].terms.count == 0 {  createTerms() }
     }
 
     // MARK: - Table view data source
@@ -42,6 +45,11 @@ class SemesterTableViewController: UITableViewController {
         termIdx = indexPath.row
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //tableView.reloadData()
+        termIdx = -1
+    }
+    
     func createCourses () -> [Course] {
         // Given that all terms have 5 Coures
         var courseList = [Course]()
@@ -56,20 +64,20 @@ class SemesterTableViewController: UITableViewController {
         for _ in 1...3 {
             let term : Term = Term(courses: createCourses())
             print("Total courses created for each term \(term.courses.count)")
-            termList.append(term)
+            self.delegate?.studentList[sIdx].terms.append(term)
         }
     }
     
-    func addCourse(course: Course) {
-        print("DEBUG: Added course with the following details:\n\(course)")
-        //courseList.append(course)
-        
-    }
-    
-    func addTerm(term: Term) {
-        print("DEBUG: Added term with the following details:\n")
-        termList.append(term)
-    }
+//    func addCourse(course: Course) {
+//        print("DEBUG: Added course with the following details:\n\(course)")
+//        //courseList.append(course)
+//        
+//    }
+//    
+//    func addTerm(term: Term) {
+//        print("DEBUG: Added term with the following details:\n")
+//        termList.append(term)
+//    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

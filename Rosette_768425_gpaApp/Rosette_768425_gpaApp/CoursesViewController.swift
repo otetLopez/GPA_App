@@ -28,6 +28,7 @@ class CoursesViewController: UIViewController {
 
     var courseList = [Course]()
     var termidx : Int = -1
+    var sIdx : Int = -1
     var marks = [Int]()
     var credit : [Int] = [1,2,3,4,5]
     var gpa : Double = 0.0
@@ -37,6 +38,9 @@ class CoursesViewController: UIViewController {
         super.viewDidLoad()
 
         termidx = self.delegate!.termIdx
+        sIdx = self.delegate!.sIdx
+        retrieveMarks()
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         self.view.addGestureRecognizer(tapGesture)
         
@@ -44,11 +48,6 @@ class CoursesViewController: UIViewController {
     }
     
     @objc func viewTapped() {
-//        c1.resignFirstResponder()
-//        c2.resignFirstResponder()
-//        c3.resignFirstResponder()
-//        c4.resignFirstResponder()
-//        c5.resignFirstResponder()
         for c in cmarks {
             c.resignFirstResponder()
         }
@@ -69,42 +68,58 @@ class CoursesViewController: UIViewController {
             }
             marks.append(mark)
         }
-        //createCourse()
-        //createTerm()
         if err == .SUCCESSFUL {
-            var idx : Int = 0
-            for mark in marks {
-                print("there are total \(marks.count)")
-                self.delegate?.termList[termidx].courses[idx].setMark(mark: mark)
-                self.delegate?.termList[termidx].courses[idx].setGrade()
-                self.delegate?.termList[termidx].courses[idx].setWGP()
-                idx += 1
-            }
-            self.delegate?.termList[termidx].setgpa()
-            self.delegate?.termList[termidx].setgrade()
-            self.gpa = self.delegate?.termList[termidx].getgpa() ?? 0.0
-            self.grade = self.delegate?.termList[termidx].getgrade() ?? ""
-            
-            resultLbl.text! = String(format: "%.2f", self.gpa)
+            calculategpa()
         }
     }
     
-    func createCourse() {
+    func calculategpa() {
         var idx : Int = 0
         for mark in marks {
-            let course : Course = Course(mark: mark, credit: credit[idx])
+            print("there are total \(marks.count)")
+            self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setMark(mark: mark)
+            self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setGrade()
+            self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].setWGP()
             idx += 1
-            //self.delegate?.addCourse(course: course)
-            courseList.append(course)
         }
+        self.delegate?.delegate?.studentList[sIdx].terms[termidx].setgpa()
+        self.delegate?.delegate?.studentList[sIdx].terms[termidx].setgrade()
+        self.gpa = self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgpa() ?? 0.0
+        self.grade = self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgrade() ?? ""
+        
+        resultLbl.text! = String(format: "%.2f", self.gpa)
     }
     
-    func createTerm() {
-        let term : Term = Term(courses: courseList)
-        self.gpa = term.getgpa()
-        self.grade = term.getgrade()
-        self.delegate?.addTerm(term : term)
+    func retrieveMarks() {
+        print("DEBUG: Student has grade of \(self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgrade() ?? "") which was previously calculated")
+        if (!(self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgrade().isEmpty)!) {
+            var idx : Int = 0
+            for c in cmarks {
+                let mark : Int = (self.delegate?.delegate?.studentList[sIdx].terms[termidx].courses[idx].getMark())!
+                c.text! =  "\(mark)"
+                idx += 1
+            }
+            self.gpa = (self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgpa())!
+            resultLbl.text! = String(format: "%.2f", self.gpa)
+            }
     }
+    
+//    func createCourse() {
+//        var idx : Int = 0
+//        for mark in marks {
+//            let course : Course = Course(mark: mark, credit: credit[idx])
+//            idx += 1
+//            //self.delegate?.addCourse(course: course)
+//            courseList.append(course)
+//        }
+//    }
+//
+//    func createTerm() {
+//        let term : Term = Term(courses: courseList)
+//        self.gpa = term.getgpa()
+//        self.grade = term.getgrade()
+//        self.delegate?.addTerm(term : term)
+//    }
     
     func alert(title: String, msg : String) {
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)

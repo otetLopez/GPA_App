@@ -14,7 +14,7 @@ class Student {
     private var sid : String
     private var cgpa : Double
     private var cgrade : String
-    private var terms : [Term]
+    public var terms : [Term]
     
     init(fname: String, lname: String, sid: String) {
         self.fname = fname

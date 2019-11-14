@@ -11,6 +11,7 @@ import UIKit
 class StudentsTableViewController: UITableViewController {
 
     var studentList = [Student]()
+    var sIdx : Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,8 +50,14 @@ class StudentsTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
+        sIdx = -1
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You selected student \(studentList[indexPath.row].getfname())")
+        sIdx = indexPath.row
+    }
+    
     
     /*
     // Override to support conditional editing of the table view.
@@ -98,6 +105,10 @@ class StudentsTableViewController: UITableViewController {
         if let register = segue.destination as? RegisterViewController {
             register.delegate = self
         }
+        
+        if let terms = segue.destination as? SemesterTableViewController {
+              terms.delegate = self
+          }
     }
 
 }

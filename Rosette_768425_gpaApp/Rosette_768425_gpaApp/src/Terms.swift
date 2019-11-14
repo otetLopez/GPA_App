@@ -18,8 +18,8 @@ class Term {
         self.gpa = 0.0
         self.grade = ""
         
-        self.setgpa()
-        self.setgrade()
+        //self.setgpa()
+        //self.setgrade()
     }
     
     public func setgpa() {
