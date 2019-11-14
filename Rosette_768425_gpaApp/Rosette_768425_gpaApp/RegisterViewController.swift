@@ -69,7 +69,6 @@ class RegisterViewController: UIViewController {
         cancelAction.setValue(UIColor.orange, forKey: "titleTextColor")
          
         let sureAction = UIAlertAction(title: "Yes, I'm Sure!", style: .destructive) { (action) in
-            print("DEBUG: Sure student")
             if self.isSidValid() { self.createStudent() }
             else { self.alert(title: "Error", msg: "ID already exists") }
         }

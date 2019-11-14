@@ -11,7 +11,7 @@ import UIKit
 class StudentsTableViewController: UITableViewController, UISearchResultsUpdating {
 
     @IBOutlet weak var searchBar: UISearchBar!
-    var resultSearchController = UISearchController()
+    var resultSearchController : UISearchController!
     var filteredTableData = [String]()
     var studentNames = [String]()
     
@@ -25,14 +25,15 @@ class StudentsTableViewController: UITableViewController, UISearchResultsUpdatin
             controller.definesPresentationContext = true
             controller.searchBar.placeholder = "Search Student"
             controller.obscuresBackgroundDuringPresentation = false
-            controller.dimsBackgroundDuringPresentation = false
+            //controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
 
-            tableView.tableHeaderView = controller.searchBar
+//            tableView.tableHeaderView = controller.searchBar
 
             return controller
         })()
 
+        navigationItem.searchController = resultSearchController
         // Reload the table
         tableView.reloadData()
 
@@ -98,6 +99,7 @@ class StudentsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     override func viewDidAppear(_ animated: Bool) {
         studentNames.removeAll()
+//        resultSearchController.isActive = false
         resultSearchController.searchBar.text! = ""
         //resultSearchController.searchBar.setShowsCancelButton(false, animated: true)
         //if studentList.count <= 0 { resultSearchController.searchBar.isHidden = true }
@@ -131,7 +133,7 @@ class StudentsTableViewController: UITableViewController, UISearchResultsUpdatin
             sIdx = indexPath.row
         }
         resultSearchController.dismiss(animated: false)
-        dismiss(animated: true)
+        //dismiss(animated: true)
     }
     
     func updateSearchResults(for searchController: UISearchController) {
