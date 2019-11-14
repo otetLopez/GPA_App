@@ -14,3 +14,8 @@ enum ErrorCodes {
     case ERROR_MISSING_FIELDS
     case ERROR_UKNOWN
 }
+
+enum GradeStatus {
+    case STATUS_TERM_GRADE_COMPLETE
+    case STATUS_TERM_GRADE_INCOMPLETE
+}

@@ -44,9 +44,21 @@ class StudentsTableViewController: UITableViewController {
         let cname : String = studentList[indexPath.row].getfname() + " " + studentList[indexPath.row].getlname()
         cell.textLabel?.text = cname
         
-        //if studentList.
-        // Configure the cell...
-
+        if studentList[indexPath.row].terms.count > 0 {
+            var status : GradeStatus = .STATUS_TERM_GRADE_COMPLETE
+            for term in studentList[indexPath.row].terms {
+                if term.getgrade().isEmpty {
+                    status = .STATUS_TERM_GRADE_INCOMPLETE
+                }
+            }
+            
+            if status == .STATUS_TERM_GRADE_COMPLETE {
+                studentList[indexPath.row].setcgpa()
+                studentList[indexPath.row].setgrade()
+                
+                cell.detailTextLabel?.text = "CGPA:  \(String(format: "%.2f", studentList[indexPath.row].getcgpa()))"
+            }
+        }
         return cell
     }
     
