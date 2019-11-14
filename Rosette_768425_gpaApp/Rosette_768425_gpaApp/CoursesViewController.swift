@@ -58,20 +58,25 @@ class CoursesViewController: UIViewController {
         marks.removeAll()
         for c in cmarks {
             var mark : Int = 0
-            if c.text!.isEmpty { mark = 0 }
+            if c.text!.isEmpty {
+                err = .ERROR_MISSING_FIELDS
+                alert(title: "Error", msg: "\(err): Missing fields \(c.text!)")
+            }
             else {
                 mark = Int(c.text!)!
                 if mark > 100 || mark < 0 {
                     marks.removeAll()
-                    alert(title: "Error", msg: "Invalid mark inputted \(c.text!)")
-                    err = .ERROR_UKNOWN
+                    err = .ERROR_INVALID_MARK
+                    alert(title: "Error", msg: "\(err): Invalid mark inputted \(c.text!)")
+                    
                 }
             }
             marks.append(mark)
         }
+        
         if err == .SUCCESSFUL {
             calculategpa()
-        }
+        } else { marks.removeAll() }
     }
     
     func calculategpa() {
