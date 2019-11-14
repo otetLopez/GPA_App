@@ -20,6 +20,7 @@
 		F50A5532237BEF7E00840B13 /* ErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5531237BEF7E00840B13 /* ErrorCodes.swift */; };
 		F50A5534237C458900840B13 /* Terms.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5533237C458900840B13 /* Terms.swift */; };
 		F50A5536237C45BE00840B13 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A5535237C45BE00840B13 /* Course.swift */; };
+		F5B674BB237D904700617933 /* Win.wav in Resources */ = {isa = PBXBuildFile; fileRef = F5B674BA237D904700617933 /* Win.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		F50A5531237BEF7E00840B13 /* ErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodes.swift; sourceTree = "<group>"; };
 		F50A5533237C458900840B13 /* Terms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terms.swift; sourceTree = "<group>"; };
 		F50A5535237C45BE00840B13 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		F5B674BA237D904700617933 /* Win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Win.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		F50A550F237BE17F00840B13 /* Rosette_768425_gpaApp */ = {
 			isa = PBXGroup;
 			children = (
+				F5B674B9237D901F00617933 /* audio */,
 				F50A552E237BEE7F00840B13 /* src */,
 				F50A5510237BE17F00840B13 /* AppDelegate.swift */,
 				F50A5512237BE17F00840B13 /* SceneDelegate.swift */,
@@ -94,6 +97,14 @@
 				F50A5535237C45BE00840B13 /* Course.swift */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		F5B674B9237D901F00617933 /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				F5B674BA237D904700617933 /* Win.wav */,
+			);
+			path = audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50A551D237BE18400840B13 /* LaunchScreen.storyboard in Resources */,
+				F5B674BB237D904700617933 /* Win.wav in Resources */,
 				F50A551A237BE18400840B13 /* Assets.xcassets in Resources */,
 				F50A5518237BE17F00840B13 /* Main.storyboard in Resources */,
 			);

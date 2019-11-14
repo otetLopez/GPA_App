@@ -89,8 +89,10 @@ class StudentsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     override func viewDidAppear(_ animated: Bool) {
         studentNames.removeAll()
-        if studentList.count <= 0 { resultSearchController.searchBar.isHidden = true }
-        else { resultSearchController.searchBar.isHidden = false }
+        resultSearchController.searchBar.text! = ""
+        //resultSearchController.searchBar.setShowsCancelButton(false, animated: true)
+        //if studentList.count <= 0 { resultSearchController.searchBar.isHidden = true }
+        //else { resultSearchController.searchBar.isHidden = false }
         var idx : Int = 0
         for student in studentList {
             let name : String = "\(student.getfname()) \(student.getlname())"

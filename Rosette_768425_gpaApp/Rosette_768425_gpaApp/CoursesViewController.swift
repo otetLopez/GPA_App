@@ -7,16 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CoursesViewController: UIViewController {
 
-    weak var delegate: SemesterTableViewController?
-    @IBOutlet weak var c1: UITextField!
-    @IBOutlet weak var c2: UITextField!
-    @IBOutlet weak var c3: UITextField!
-    @IBOutlet weak var c4: UITextField!
-    @IBOutlet weak var c5: UITextField!
+    var audioplayer: AVAudioPlayer!
     
+    weak var delegate: SemesterTableViewController?
     @IBOutlet var cmarks: [UITextField]!
     @IBOutlet weak var c1Lbl: UILabel!
     @IBOutlet weak var c2Lbl: UILabel!
@@ -68,7 +65,6 @@ class CoursesViewController: UIViewController {
                     marks.removeAll()
                     err = .ERROR_INVALID_MARK
                     alert(title: "Error", msg: "\(err): Invalid mark inputted \(c.text!)")
-                    
                 }
             }
             marks.append(mark)
@@ -92,7 +88,17 @@ class CoursesViewController: UIViewController {
         self.gpa = self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgpa() ?? 0.0
         self.grade = self.delegate?.delegate?.studentList[sIdx].terms[termidx].getgrade() ?? ""
         
+        if self.gpa >= 2.8 {
+           // TODO play sound
+            playSound()
+        }
         resultLbl.text! = String(format: "%.2f", self.gpa)
+    }
+    
+    func playSound() {
+        let soundURL = Bundle.main.url(forResource: "Win", withExtension: "wav")
+        audioplayer = try! AVAudioPlayer(contentsOf: soundURL!)
+        audioplayer.play()
     }
     
     func retrieveMarks() {
@@ -128,5 +134,7 @@ class CoursesViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }
