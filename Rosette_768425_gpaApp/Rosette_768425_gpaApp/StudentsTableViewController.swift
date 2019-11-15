@@ -99,8 +99,8 @@ class StudentsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     override func viewDidAppear(_ animated: Bool) {
         studentNames.removeAll()
-//        resultSearchController.isActive = false
-        resultSearchController.searchBar.text! = ""
+        //resultSearchController.isActive = false
+        //resultSearchController.searchBar.text! = ""
         //resultSearchController.searchBar.setShowsCancelButton(false, animated: true)
         //if studentList.count <= 0 { resultSearchController.searchBar.isHidden = true }
         //else { resultSearchController.searchBar.isHidden = false }
@@ -132,7 +132,7 @@ class StudentsTableViewController: UITableViewController, UISearchResultsUpdatin
             print("DEBUG: You selected student \(studentList[indexPath.row].getfname())")
             sIdx = indexPath.row
         }
-        resultSearchController.dismiss(animated: false)
+        //resultSearchController.dismiss(animated: false)
         //dismiss(animated: true)
     }
     

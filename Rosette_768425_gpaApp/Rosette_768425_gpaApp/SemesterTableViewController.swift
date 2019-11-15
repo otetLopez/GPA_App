@@ -61,7 +61,7 @@ class SemesterTableViewController: UITableViewController {
     }
     
     func createTerms() {
-        print("DEBUG: Creating terms")
+        //print("DEBUG: Creating terms")
         for _ in 1...3 {
             let term : Term = Term(courses: createCourses())
             self.delegate?.studentList[sIdx].terms.append(term)
